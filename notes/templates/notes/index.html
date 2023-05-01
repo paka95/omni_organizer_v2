@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Notes{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles-notes.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="notes-container">
+        <div class="notes-sidebar">
+            <div class="note-add-btn-wrapper">
+                <button class="note-add-btn" id="note-add-btn">ADD NOTE</button>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="notes-list">
+
+            </div>
+        </div>
+
+        <div class="note-input-container">
+            <!-- <form class="note-input-form" id="note-input-form">
+                <div style="display: flex; justify-content: space-around;">
+                    <input type="text" placeholder="Enter title..." class="note-input-title" id="note-input-title">
+                    <button type="submit" class="note-save-btn" id="note-save-btn">Save</button>
+                </div>
+                <hr/>
+                <textarea placeholder="Enter a note..." class="note-input-content" id="note-input-content"></textarea>
+            </form> -->
+        </div>
+    </div>
+
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+                .create( document.querySelector( '#note-input-content' ), {
+                    theme: 'dark'
+                } )
+                .then( editor => {
+                        console.log( editor );
+                } )
+                .catch( error => {
+                        console.error( error );
+                } );
+    </script> -->
+    
+    <script type="module" src="{% static 'notes/js/get-notes.js' %}"></script>
+
+{% endblock %}
+
+
+

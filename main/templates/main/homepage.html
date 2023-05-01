@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+    <div class="app-options">
+        <a href="{% url 'finances' %}" class="app-icon" id="finances-icon">Finances</a>
+        <a href="{% url 'meals' %}" class="app-icon" id="calories-icon">Meals</a>
+        <a href="{% url 'workout' %}" class="app-icon" id="workout-icon">Workout</a>
+        <a href="{% url 'notes' %}" class="app-icon" id="notes-icon">Notes</a>
+    </div>
+{% endblock %}

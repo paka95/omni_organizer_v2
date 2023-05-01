@@ -1,0 +1,185 @@
+#nav {
+    background-color: rgb(51, 192, 51);
+}
+
+
+#site-name a {
+    color:white
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 10px;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: rgb(42, 45, 70);
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5e5e5e; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.separator {
+    margin: 0 auto;
+    width: 90%;
+    height: 1px;
+    background-color: gray;
+}
+
+.notes-container {
+    background-color: #0F111B; 
+    width: 100%; 
+    height: 85vh; 
+    border-radius: 10px; 
+    display: flex
+}
+
+.notes-sidebar{
+    width: 20%; 
+    height: 100%; 
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px; 
+    border-right: solid 1px gray;
+    overflow-y: hidden; 
+}
+
+.notes-list {
+    height: 90%; 
+    overflow-y: overlay;
+}
+
+.note-add-btn-wrapper {
+    height: 10%; 
+    display: flex; 
+    align-items: center;
+}
+
+.note-add-btn {
+    border: none; 
+    border-radius: 10px; 
+    background-color: green; 
+    padding: 5px; 
+    width: 90%; 
+    margin: 0 auto; 
+    display: block;
+}
+
+.note-add-btn:hover {
+    background-color: darkgreen;
+}
+
+.note-card {
+    margin: 5px auto; 
+    background-color: transparent; 
+    width: 90%; 
+    height: 120px; 
+    border-radius: 10px; 
+    padding: 5px;
+    cursor: pointer;
+}
+
+.note-card:hover {
+    color: rgb(196, 196, 196);
+}
+
+.note-card-headline {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: transparent;
+    height: 30px;
+}
+
+.note-card-title {
+    font-size: 20px; 
+    font-weight: bold;
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap;  
+}
+
+.delete-btn {
+    width: 20px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.note-card-content {
+    background-color: transparent; 
+    height: 50px;
+    overflow: hidden; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis; 
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.note-card-date {
+    background-color: transparent; 
+    font-size: 13px; 
+    display: flex; 
+    align-items: flex-end; 
+    height: 30px;
+}
+
+.note-input-container {
+    padding: 10px; 
+    width: 80%
+}
+
+.note-input-form {
+    height: 100%;
+}
+
+.note-input-title {
+    width: 90%;
+    outline: none; 
+    border: none; 
+    background-color: transparent; 
+    caret-color: white;
+    color:gray; 
+}
+
+.note-input-content {
+    display: block; 
+    width: 100%; 
+    height: 90%; 
+    resize: none; 
+    color:gray; 
+    outline: none; 
+    border: none; 
+    background-color: transparent; 
+    caret-color: white;
+}
+
+.note-save-btn {
+    border: none; 
+    border-radius: 10px; 
+    background-color: green; 
+    padding: 5px; 
+    width: 10%; 
+    margin: 0 auto; 
+    display: block;
+}
+
+.note-save-btn:hover {
+    background-color: darkgreen;
+}

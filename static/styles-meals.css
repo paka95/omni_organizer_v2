@@ -1,0 +1,126 @@
+#nav {
+    background-color: orange;
+}
+
+#site-name a {
+    color:white
+}
+
+.content-row {
+    background-color: #0F111B; 
+    border-radius: 10px; 
+    max-width: 1000px; 
+    padding: 2px;
+    margin: 10px 0;
+    /* display: flex; */
+}
+
+#product-form, #meal-form{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 5px
+}
+
+.input-wrapper {
+    border-radius: 10px;
+    padding: 5px;
+    height: 32px;
+    line-height: 20px;
+}
+
+.separator {
+    top:30%;
+    bottom:30%;
+    border-left:1px solid rgb(116, 116, 116);
+    margin: 5px 10px;
+}
+
+.input-cell {
+    background-color: transparent; 
+    border: none;
+    caret-color: orange; 
+    width: 100%;
+    color: rgb(116, 116, 116);
+    transition: 0.6s ease;
+}
+
+.input-cell:focus, .input-cell:hover{
+    border-bottom: 1px solid #1890ff;
+    outline: none;
+}
+
+#food-type {
+    cursor: pointer;
+}
+
+.type-cell {
+    flex-basis: 120px; 
+    flex-shrink: 0; 
+    flex-grow: 0;
+}
+
+.nutrients-cell {
+    display: flex;
+    /* background-color: blue; */
+}
+
+.nutrients-input-cell {
+    background-color: transparent; 
+    border: none;
+    caret-color: orange; 
+    max-width: 110px;
+    color: rgb(116, 116, 116);
+    transition: 0.6s ease;
+    margin: 0 5px;
+    /* flex-grow: 0; */
+}
+
+.nutrients-input-cell:focus, .nutrients-input-cell:hover {
+    border-bottom: 1px solid #1890ff;
+    outline: none;
+} 
+
+.content-row-btn {
+    margin: 0 10px;
+    background-color: orange;
+    border: none;
+    border-radius: 10px;
+    width: 120px;
+    transition: 0.2s;
+    margin-left: auto;
+    color: white;
+}
+
+.content-row-btn:hover {
+    background-color: rgb(179, 116, 0);
+    color:#c4c4c4
+}
+
+#meal-product-type-cell {
+    width: 130px;
+    /* background-color: blue; */
+}
+
+.meal-weight-input {
+    background-color: transparent; 
+    border: none;
+    caret-color: orange; 
+    max-width: 110px;
+    color: rgb(116, 116, 116);
+    transition: 0.6s ease;
+    margin: 0 5px;
+}
+
+.meal-weight-input:focus, .meal-weight-input:hover {
+    border-bottom: 1px solid #1890ff;
+    outline: none;
+} 
+
+#meal-name-cell {
+    width: 150px;
+}
+
+select:hover {
+    cursor: pointer;
+}

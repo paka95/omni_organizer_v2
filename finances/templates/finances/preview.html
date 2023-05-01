@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Preview{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles-finances.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="input-cell-date-sm-wrapper">
+        <input type="date" id="input-cell-date-sm-preview" class="input-cell-date-sm">
+    </div>
+
+    <div class="preview-head-row">
+        <div class="preview-cell">
+            <div id="tag-food">Food</div>
+        </div>
+        <div class="separator"></div>
+        <div class="preview-cell">
+            <div id="tag-transport">Transport</div>
+        </div>
+        <div class="separator"></div>
+        <div class="preview-cell">
+            <div id="tag-bills">Bills</div>
+        </div>
+        <div class="separator"></div>
+        <div class="preview-cell">
+            <div id="tag-fees">Fees</div>
+        </div>
+        <div class="separator"></div>
+        <div class="preview-cell">
+            <div id="tag-misc">Misc</div>
+        </div>
+    </div>
+
+    <div class="expenses-list-container" id="preview-list-container"></div>
+
+    <div class="preview-head-row" id="preview-total-tag-row"></div>
+    <div class="preview-head-row" id="preview-total-row"></div>
+
+    <a href="{% url 'finances' %}" id="preview-btn" class="preview-btn">Back</a>
+
+    <script src="{% static 'finances/js/populate-date-preview.js' %}"></script>
+    <script type="module" src="{% static 'finances/js/get-preview.js' %}"></script>
+{% endblock %}

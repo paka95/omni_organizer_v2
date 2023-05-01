@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Finances{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles-finances.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="content-row">
+        <form id="expense-form">
+        {% csrf_token %}
+        <div class="input-wrapper title-cell">
+            <input type="text" id="expense-title" placeholder="Title..." class="input-cell">
+        </div>
+        <div class="separator"></div>
+        <div class="input-wrapper amount-cell">
+            <input type="text" id="expense-amount" placeholder="Amount..." class="input-cell">
+        </div>
+        <div class="separator"></div>
+        <div class="input-wrapper tag-cell">
+            <select name="cars" id="expense-tag" class="input-cell">
+                <option value="" disabled hidden selected>Select Tag</option>
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="bills">Bills</option>
+                <option value="fees">Fees</option>
+                <option value="misc">Misc</option>
+            </select>
+        </div>
+        <div class="separator"></div>
+        <div class="input-wrapper date-cell">
+            <input type="date" id="expense-date" class="input-cell-date">
+        </div>
+        <button type="submit" id="expense-add-btn" class="content-row-btn">Add</button>
+        <button id="expense-cancel-btn" class="content-row-btn btn-hidden">Cancel</button>
+        </form>
+    </div>
+
+    <div class="input-cell-date-sm-wrapper">
+        <input type="date" id="input-cell-date-sm" class="input-cell-date-sm">
+    </div>
+
+    <div class="expenses-list-container"></div>
+    <div class="content-row" style="padding: 5px;" id="total-row"></div>
+
+    <a href="{% url 'preview' %}" id="preview-btn" class="preview-btn">Preview</a>
+    
+    <script src="{% static 'finances/js/populate-date.js' %}"></script>
+    <script type="module" src="{% static 'finances/js/get-expenses.js' %}"></script>
+{% endblock %}
+
+

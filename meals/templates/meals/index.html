@@ -1,0 +1,123 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Meals{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles-meals.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content-row">
+
+    <label for="product-form" style="padding-left:10px; color: orange; font-size: 1.5vh">Add product to the database</label>
+    <form id="product-form">
+        {% csrf_token %}
+        <div class="input-wrapper name-cell">
+            <input type="text" id="product-name" placeholder="Name..." class="input-cell">
+        </div>
+        <div class="separator"></div>
+            <div class="input-wrapper type-cell">
+            <select name="product-type" id="product-type" class="input-cell">
+                <option value="" disabled hidden selected>Select Type</option>
+                <option value="meat">Meat</option>
+                <option value="dairy">Dairy</option>
+                <option value="eggs">Eggs</option>
+                <option value="fruits">Fruits</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="pasta">Pasta / Grains</option>
+                <option value="drinks">Drinks</option>
+                <option value="fats">Fats</option>
+                <option value="breadstuff">Breadstuff</option>
+                <option value="nuts">Nuts</option>
+                <option value="fish">Fish</option>
+                <option value="mushrooms">Mushrooms</option>
+                <option value="misc">Misc</option>
+            </select>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="input-wrapper nutrients-cell">
+            <input type="text" id="proteins" placeholder="Proteins/100g" class="nutrients-input-cell">
+        </div>
+        <div class="separator"></div>
+        <div class="input-wrapper nutrients-cell">
+            <input type="text" id="carbs" placeholder="Carbs/100g" class="nutrients-input-cell">
+        </div>
+        <div class="separator"></div>
+        <div class="input-wrapper nutrients-cell">
+            <input type="text" id="fats" placeholder="Fats/100g" class="nutrients-input-cell">
+        </div>
+        <div class="separator"></div>
+        <div class="input-wrapper nutrients-cell">
+            <input type="text" id="kcal" placeholder="Kcal/100g" class="nutrients-input-cell">
+        </div>
+
+        <button type="submit" id="product-add-btn" class="content-row-btn">Add</button>
+
+    </form>
+</div>
+
+<div class="content-row">
+    <label for="meal-form" style="padding-left:10px; color: orange; font-size: 1.5vh">Add new meal</label>
+    <form id="meal-form">
+        {% csrf_token %}
+        <div class="input-wrapper" id="meal-product-type-cell">
+            <select id="meal-product-type" class="input-cell">
+              <option value="" disabled hidden selected>Select type</option>
+              {% for type, label in product_types %}
+                <option value="{{ type }}">{{ label }}</option>
+              {% endfor %}
+            </select>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="input-wrapper" id="meal-name-cell">
+            <select id="meal-name" class="input-cell" disabled>
+                <option value="" disabled hidden selected>Product</option>
+            </select>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="input-wrapper" id="meal-day-cell">
+            <select id="meal-day" class="input-cell">
+                <option value="" disabled hidden selected>Day</option>
+                {% for type, label in meal_days %}
+                    <option value="{{ type }}">{{ label }}</option>
+                {% endfor %}
+                </select>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="input-wrapper" id="meal-type-cell">
+            <select id="meal-type" class="input-cell">
+                <option value="" disabled hidden selected>Meal</option>
+                {% for type, label in meal_types %}
+                    <option value="{{ type }}">{{ label }}</option>
+                {% endfor %}
+                </select>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="input-wrapper" id="meal-weight-cell">
+            <input type="text" placeholder="Weight" id="meal-weight" class="meal-weight-input">
+        </div>
+
+
+        <button type="submit" id="meal-add-btn" class="content-row-btn">Add</button>
+
+
+
+    </form>
+</div>
+
+<div class="meals-list-container"></div>
+
+
+<script type="module" src="{% static 'meals/js/get-meals.js' %}"></script>
+
+{% endblock %}

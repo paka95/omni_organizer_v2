@@ -1,0 +1,312 @@
+#nav {
+    background-color: red;
+}
+
+#site-name a {
+    color:white
+}
+
+.content-row {
+    background-color: #0F111B; 
+    border-radius: 10px; 
+    max-width: 750px; 
+    padding: 2px;
+    margin: 10px 0;
+    display: flex;
+}
+
+.content-row-sm {
+    height: 30px;
+    margin: 0 0;
+    margin-bottom: 5px;
+    padding-left: 7px;
+}
+
+.content-row-sm:nth-child(even){
+    background-color: #131522; 
+}
+
+.content-row-sm:nth-child(odd):hover{
+    background-color: #121520; 
+}
+
+.content-row-sm:nth-child(even):hover{
+    background-color: #141624; 
+}
+
+input:focus {
+    outline: none;
+}
+
+.input-wrapper {
+    border-radius: 10px;
+    padding: 5px;
+    height: 32px;
+    line-height: 20px;
+}
+
+.input-wrapper-sm {
+    height: 30px;
+    line-height: 15px;
+}
+  
+.input-cell {
+    background-color: transparent; 
+    border: none;
+    caret-color: red; 
+    width: 100%;
+    color: rgb(116, 116, 116);
+    transition: 0.6s ease;
+}
+
+.input-cell:focus, .input-cell:hover{
+    border-bottom: 1px solid #1890ff;
+    outline: none;
+}
+
+::placeholder {
+    color: rgb(116, 116, 116)
+}
+
+.input-cell-date {
+    background-color: transparent; 
+    border: none;
+    color: rgb(116, 116, 116);
+}
+
+.input-cell-date::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: white;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.input-cell-date-sm {
+    background-color: transparent; 
+    max-width: 80px;
+    border: none;
+    color: rgb(255, 255, 0);
+}
+
+.input-cell-date-sm-wrapper {
+    margin-left: 10px; 
+    position: relative; 
+    max-width: 80px;
+    height: 25px;
+}
+
+.input-cell-date-sm-wrapper:hover {
+    border-bottom: 1px yellow solid;
+}
+
+.input-cell-date-sm::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: white;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.title-cell {
+    flex-basis: 160px; 
+    flex-shrink: 0; 
+    flex-grow: 0;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.amount-cell {
+    flex-basis: 120px; 
+    flex-shrink: 0; 
+    flex-grow: 0;
+}
+
+.tag-cell {
+    flex-basis: 100px; 
+    flex-shrink: 0; 
+    flex-grow: 0;
+}
+
+#expense-tag {
+    cursor: pointer;
+}
+
+.date-cell {
+    flex-basis: 80px; 
+    flex-shrink: 0; 
+    flex-grow: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 5px
+}
+  
+.separator {
+    top:30%;
+    bottom:30%;
+    border-left:1px solid rgb(116, 116, 116);
+    margin: 5px 10px;
+}
+
+.content-row-btn {
+    margin: 0 10px;
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    width: 120px;
+    transition: 0.2s;
+    margin-left: auto;
+    color: white;
+}
+
+.btn-hidden {
+    display: none;
+}
+
+.content-row-btn:hover {
+    background-color: rgb(179, 4, 4);
+    color:#c4c4c4
+}
+
+.expenses-list-container {
+    max-height: 300px;
+    overflow: auto;
+    max-width: 760px; 
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+
+/* Track */
+::-webkit-scrollbar-track {
+    /* background: #4d4d4d;  */
+    background-color: rgb(42, 45, 70);
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5e5e5e; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+#tag-food {
+    color: red
+}
+
+#tag-transport {
+    color: green
+}
+
+#tag-bills {
+    color: yellow
+}
+
+#tag-fees {
+    color: purple
+}
+
+#tag-misc {
+    color: blue
+}
+
+.delete-btn {
+    width: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    width: 20px;
+    text-align: center;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.total-cell {
+    max-width: 300px;
+}
+
+.preview-btn {
+    display: block;
+    text-decoration: none;
+    margin: 20px 0px;
+    background-color: rgb(49, 57, 90);
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    width: 120px;
+    line-height: 30px;
+    transition: 0.2s;
+    color: white;
+}
+
+.preview-btn:hover {
+    background-color: #0F111B; 
+    color:#c4c4c4
+}
+
+.preview-head-row {
+    background-color: #0F111B; 
+    border-radius: 10px; 
+    max-width: 750px; 
+    padding: 2px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.preview-cell {
+    width: 100px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.preview-row-sm {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.preview-row-sm:nth-child(even){
+    background-color: #131522; 
+}
+
+.preview-row-sm:nth-child(odd):hover{
+    background-color: #121520; 
+}
+
+.preview-row-sm:nth-child(even):hover{
+    background-color: #141624; 
+}

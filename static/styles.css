@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+.base-body {
+    background-color: rgb(29, 31, 49);
+    color: gray;
+    display: flex;
+    min-height: 100vh;
+}
+
+.nav-element {
+    width: 30px;
+    text-align: center;
+    margin: 0 20px;
+}
+
+#nav {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(49, 57, 90);
+    box-shadow: 0 0px 10px rgb(13, 18, 22);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Ubuntu;
+}
+
+  
+#site-name {
+    text-align: center;
+    line-height: 40px;
+    font-size: 2vw;
+    letter-spacing: 1.5px;
+    flex-grow: 1;
+    max-width: 20%;
+  }
+
+#site-name a {
+    text-decoration: none;
+    color: rgb(171, 172, 173);
+}
+
+#site-name a:hover {
+    color: rgb(226, 226, 228);
+}
+
+.empty {
+    visibility: hidden;
+}
+
+.fa-bars {
+    color: rgb(171, 172, 173);
+    scale: 1.5;
+}
+
+.fa-bars:hover {
+    color: rgb(226, 226, 228);
+}
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropbtn {
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100px;
+    border-radius: 5px;
+    right: 0;
+    z-index: 1;
+    background-color: #0F111B; 
+    box-shadow: 0 0 4px 1px black;
+}
+  
+.dropdown-content a {
+    color: red;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#base-content {
+    padding-top: 50px;
+    min-width: 100vw;
+}
+
+#sidebar {
+    width: 20%;
+    background-color: rgb(49, 57, 90);
+    padding-top: 50px; /* height of the nav element */
+    box-sizing: border-box;
+}
+
+#content {
+    flex-grow: 1;
+    padding: 10px;
+    padding-top: 50px; /* height of the nav element */
+}
+
+.hyperlinks-section {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.intersite-button {
+    width: 100%;
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none;
+    color: rgb(171, 172, 173);
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    font-family: Ubuntu;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+#finances:hover {
+    background-color: red;
+    color: rgb(29, 39, 48);
+}
+
+#calories:hover  {
+    background-color: orange;
+    color: rgb(29, 39, 48);
+}
+
+#workout:hover  {
+    background-color: rgb(83, 83, 231);
+    color: rgb(29, 39, 48);
+}
+
+#notes:hover  {
+    background-color: rgb(51, 192, 51);
+    color: rgb(29, 39, 48);
+}
+
+.app-options {
+    width: 500px;
+    margin: 120px auto; 
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 35px;
+}
+
+.app-icon {
+    text-decoration: none;
+    text-align: center;
+    line-height: 190px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    font-family: Ubuntu;
+    font-size: 30px;
+}
+
+#finances-icon {
+    border: 1px solid red;
+    color: rgb(171, 172, 173);
+}
+
+#finances-icon:hover {
+    background-color: red;
+    color: rgb(29, 39, 48);
+}
+
+#calories-icon {
+    border: 1px solid orange;
+    color: rgb(171, 172, 173);
+}
+
+#calories-icon:hover {
+    background-color: orange;
+    color: rgb(29, 39, 48);
+}
+
+#workout-icon {
+    border: 1px solid rgb(83, 83, 231);
+    color: rgb(171, 172, 173);
+}
+
+#workout-icon:hover {
+    background-color: rgb(83, 83, 231);
+    color: rgb(29, 39, 48);
+}
+
+#notes-icon {
+    border: 1px solid rgb(51, 192, 51);
+    color: rgb(171, 172, 173);
+}
+
+#notes-icon:hover {
+    background-color: rgb(51, 192, 51);
+    color: rgb(29, 39, 48);
+}
+
+
+.container-custom {
+    /* border: solid 2px white; */
+    border-radius: 10px;
+    margin: 20px 0;
+    /* background-color: greenyellow; */
+    /* margin-left: 10px; */
+}
