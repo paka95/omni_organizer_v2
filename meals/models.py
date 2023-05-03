@@ -49,14 +49,28 @@ class Meal(models.Model):
         ('sunday', 'Sunday')
     ]
 
-    day = models.CharField(max_length=50, choices=DAY_CHOICES, default=None)
-    type = models.CharField(max_length=50, choices=TYPE_CHOICES)
-    
+    meal_day = models.CharField(max_length=50, choices=DAY_CHOICES, default=None)
+    meal_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, default = None)
     weight = models.FloatField()
+    
+    @property
+    def kcal(self):
+        return self.product.kcal * self.weight / 100
+    
+    @property
+    def proteins(self):
+        return self.product.proteins * self.weight / 100
+    
+    @property
+    def carbs(self):
+        return self.product.carbs * self.weight / 100
+    
+    @property
+    def fats(self):
+        return self.product.fats * self.weight / 100
 
     def __str__(self):
-        products = self.product.all()
-        kcal_amo = sum(product.kcal * self.weight / 100 for product in products)
-        return f"{', '.join(product.name for product in self.product.all())} ({self.day}, {self.type}, {self.weight}g, {kcal_amo}kcal)"
+        return f"{self.product.name} ({self.meal_day}, {self.meal_type}, {self.weight}g, {self.weight * self.product.kcal / 100} kcal)"
     
 

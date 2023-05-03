@@ -1,8 +1,13 @@
 import { addProduct } from "./add-product.js";
 import { populateProducts } from "./populate-products.js";
 import { addMeal } from "./add-meal.js";
+import { buildList } from "./build-list.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+    buildList();
+
+
+
     const addProductBtn = document.getElementById("product-add-btn");
     addProductBtn.addEventListener('click', (e) => {
         e.preventDefault();

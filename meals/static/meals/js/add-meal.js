@@ -10,8 +10,7 @@ export function addMeal() {
     const csrftoken = getCookie('csrftoken');
 
     const mealObj = {
-        // 'mealProductType': mealProductType.value,
-        'product': [mealName.value],
+        'product': mealName.value,
         'day': mealDay.value,
         'type': mealType.value,
         'weight': mealWeight.value
@@ -27,7 +26,7 @@ export function addMeal() {
     })
     .then(response => response.json())
     .then(data => console.log(data))
-
+    mealForm.reset()
     console.log('=====');
     console.log(mealObj);
     // console.log("adding meal");

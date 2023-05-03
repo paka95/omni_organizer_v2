@@ -10,6 +10,10 @@ import datetime
 from .models import Product, Meal
 from .serializers import ProductSerializer, MealSerializer
 from itertools import zip_longest
+from django.db.models.functions import Lower
+from django.db.models import F
+from itertools import groupby
+from operator import attrgetter
 
 
 app_name = MealsConfig.name
@@ -51,3 +55,5 @@ class AddProduct(CreateAPIView):
 
 class AddMeal(ListCreateAPIView):
     serializer_class = MealSerializer
+    queryset = Meal.objects.all()
+
