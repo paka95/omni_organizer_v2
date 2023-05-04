@@ -12,7 +12,12 @@
     max-width: 1000px; 
     padding: 2px;
     margin: 10px 0;
+    position: relative;
     /* display: flex; */
+}
+
+.meal-content-row {
+    margin-bottom: 50px;
 }
 
 #product-form, #meal-form{
@@ -123,4 +128,73 @@
 
 select:hover {
     cursor: pointer;
+}
+
+
+.meals-list-container {
+    margin-top: 50px;
+    position: relative;
+    /* height: 100px; */
+    /* background-color: yellow; */
+
+    max-height: 55vh;
+    overflow: auto;
+    max-width: 1010px; 
+    border-radius: 10px;
+    /* margin: 10px 0; */
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+
+/* Track */
+::-webkit-scrollbar-track {
+    /* background: #4d4d4d;  */
+    background-color: rgb(42, 45, 70);
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5e5e5e; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.meal-row {
+    display: flex;
+    /* padding: 5px; */
+    padding-left: 10px;
+    width: 100%;
+}
+
+.meal-product-name {
+    flex-basis: 40%;
+}
+
+.meal-nutrients {
+    flex-basis: 10%;
+    text-align: center;
+}
+
+.separator-horizontal {
+    height: 1px;
+    width: 100%;
+    background-color: gray;
+    margin: 5px 0;
+}
+
+.meal-day {
+    width: 100px;
+    font-size: 2vh;
+    font-weight: bold;
+    color: whitesmoke;
+    padding-left: 10px;
 }
