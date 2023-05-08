@@ -1,4 +1,5 @@
-import { getCookie } from "./get-cookie.js"
+import { getCookie } from "./get-cookie.js";
+import { buildList } from "./build-list.js";
 
 export function addMeal() {
     const mealForm = document.getElementById('meal-form')
@@ -11,8 +12,8 @@ export function addMeal() {
 
     const mealObj = {
         'product': mealName.value,
-        'day': mealDay.value,
-        'type': mealType.value,
+        'meal_day': mealDay.value,
+        'meal_type': mealType.value,
         'weight': mealWeight.value
     }
 
@@ -25,10 +26,15 @@ export function addMeal() {
         body: JSON.stringify(mealObj),
     })
     .then(response => response.json())
-    .then(data => console.log(data))
-    mealForm.reset()
-    console.log('=====');
-    console.log(mealObj);
+    // .then(data => console.log(data))
+    .then(data => {
+        console.log(data);
+        mealForm.reset();
+        buildList();
+    })
+    
+    // console.log('=====');
+    // console.log(mealObj);
     // console.log("adding meal");
 
 

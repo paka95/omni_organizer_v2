@@ -1,18 +1,21 @@
 import { groupByDays } from "./group-by-days.js";
 
 export function buildList() {
+    const mealsListContainer = document.getElementById('meals-list-container');
+    mealsListContainer.innerHTML = ''
+
     fetch('add-meal/')
     .then(response => response.json())
     .then(data => {
-        const mealsListContainer = document.getElementById('meals-list-container');
+        // const mealsListContainer = document.getElementById('meals-list-container');
         const days = groupByDays(data);
-        console.log("====days====");
-        console.log(days);
-        console.log("====days====");
+        // console.log("====days====");
+        // console.log(days);
+        // console.log("====days====");
         for (const day in days) {
             if (Object.keys(days[day]).length !== 0) {
 
-            console.log("day:", day);
+            // console.log("day:", day);
             const mealDay = `<div class="meal-day">${day}</div>`;
 
             const mealDayDiv = document.createElement('div');
@@ -27,10 +30,10 @@ export function buildList() {
 
             // Loop over each meal type for this day
             for (const mealType in days[day]) {
-                console.log("test");
-                console.log("day", day);
-                console.log("mealType", mealType);
-                console.log("test");
+                // console.log("test");
+                // console.log("day", day);
+                // console.log("mealType", mealType);
+                // console.log("test");
 
 
               const mealTypeHTML = `
@@ -77,7 +80,7 @@ export function buildList() {
               mealsListContainer.appendChild(mealTypeDiv);
 
 
-              console.log("posilek:", `  ${mealType}:`);
+            //   console.log("posilek:", `  ${mealType}:`);
 
 
 
@@ -97,10 +100,10 @@ export function buildList() {
                     <div class="meal-nutrients">${meal.meal_kcal}</div>
                 </div>
                 `;
-                console.log("test2");
-                console.log("day2", day);
-                console.log("mealType2", mealType);
-                console.log("test2");
+                // console.log("test2");
+                // console.log("day2", day);
+                // console.log("mealType2", mealType);
+                // console.log("test2");
 
                 const mealRowsContainer = document.getElementById(`${day}-${mealType}`);
                 const mealRowDiv = document.createElement('div');
@@ -108,7 +111,7 @@ export function buildList() {
                 mealRowsContainer.appendChild(mealRowDiv);
 
 
-                console.log(`    ${meal.product_name}, ${meal.meal_kcal}`);
+                // console.log(`    ${meal.product_name}, ${meal.meal_kcal}`);
               }
             }
           }
