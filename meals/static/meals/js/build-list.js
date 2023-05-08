@@ -62,15 +62,15 @@ export function buildList() {
                     <div name="meal-row" class="meal-row">
                         <div class="meal-product-name" style="text-align: center; color:orange">TOTAL</div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients">Weight</div>
+                        <div class="meal-nutrients" id="total-meal-weight-${day}-${mealType}">Weight</div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients">Proteins</div>
+                        <div class="meal-nutrients" id="total-meal-proteins-${day}-${mealType}">Proteins</div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients">Carbs</div>
+                        <div class="meal-nutrients" id="total-meal-carbs-${day}-${mealType}">Carbs</div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients">Fats</div>
+                        <div class="meal-nutrients" id="total-meal-fats-${day}-${mealType}">Fats</div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients">Kcal</div>
+                        <div class="meal-nutrients" id="total-meal-kcal-${day}-${mealType}">Kcal</div>
                     </div>
                 </div>
                 </div>
@@ -89,17 +89,21 @@ export function buildList() {
                 <div name="meal-row" class="meal-row">
                     <div class="meal-product-name">${meal.product_name}</div>
                     <div class="separator"></div>
-                    <div class="meal-nutrients">${meal.weight}</div>
+                    <div class="meal-nutrients meal-weight-${day}-${mealType}">${meal.weight.toFixed(2)}</div>
                     <div class="separator"></div>
-                    <div class="meal-nutrients">${meal.meal_proteins}</div>
+                    <div class="meal-nutrients meal-proteins-${day}-${mealType}">${meal.meal_proteins.toFixed(2)}</div>
                     <div class="separator"></div>
-                    <div class="meal-nutrients">${meal.meal_carbs}</div>
+                    <div class="meal-nutrients meal-carbs-${day}-${mealType}">${meal.meal_carbs.toFixed(2)}</div>
                     <div class="separator"></div>
-                    <div class="meal-nutrients">${meal.meal_fats}</div>
+                    <div class="meal-nutrients meal-fats-${day}-${mealType}">${meal.meal_fats.toFixed(2)}</div>
                     <div class="separator"></div>
-                    <div class="meal-nutrients">${meal.meal_kcal}</div>
+                    <div class="meal-nutrients meal-kcal-${day}-${mealType}">${meal.meal_kcal.toFixed(2)}</div>
                 </div>
                 `;
+
+
+
+
                 // console.log("test2");
                 // console.log("day2", day);
                 // console.log("mealType2", mealType);
@@ -113,6 +117,74 @@ export function buildList() {
 
                 // console.log(`    ${meal.product_name}, ${meal.meal_kcal}`);
               }
+
+              const mealWeightCells = document.querySelectorAll(`.meal-weight-${day}-${mealType}`);
+              const totalMealWeight = document.getElementById(`total-meal-weight-${day}-${mealType}`);
+              let mealWeightSum = 0
+
+              const mealProteinsCells = document.querySelectorAll(`.meal-proteins-${day}-${mealType}`);
+              const totalMealProteins = document.getElementById(`total-meal-proteins-${day}-${mealType}`);
+              let mealProteinsSum = 0
+
+              const mealCarbsCells = document.querySelectorAll(`.meal-carbs-${day}-${mealType}`);
+              const totalMealCarbs = document.getElementById(`total-meal-carbs-${day}-${mealType}`);
+              let mealCarbsSum = 0
+
+              const mealFatsCells = document.querySelectorAll(`.meal-fats-${day}-${mealType}`);
+              const totalMealFats = document.getElementById(`total-meal-fats-${day}-${mealType}`);
+              let mealFatsSum = 0
+
+              const mealKcalCells = document.querySelectorAll(`.meal-kcal-${day}-${mealType}`);
+              const totalMealKcal = document.getElementById(`total-meal-kcal-${day}-${mealType}`);
+              let mealKcalSum = 0
+
+              mealWeightCells.forEach(cell => {
+                mealWeightSum += parseFloat(cell.innerHTML);
+              })
+            //   if (Number.isInteger(mealWeightSum)) {
+            //     totalMealWeight.innerHTML = mealWeightSum
+            //   } else {
+            //     totalMealWeight.innerHTML = mealWeightSum.toFixed(2);
+            //   }
+              totalMealWeight.innerHTML = mealWeightSum.toFixed(2);
+
+              mealProteinsCells.forEach(cell => {
+                mealProteinsSum += parseFloat(cell.innerHTML);
+              })
+              totalMealProteins.innerHTML = mealProteinsSum.toFixed(2);
+
+              mealCarbsCells.forEach(cell => {
+                mealCarbsSum += parseFloat(cell.innerHTML);
+              })
+              totalMealCarbs.innerHTML = mealCarbsSum.toFixed(2);
+
+              mealFatsCells.forEach(cell => {
+                mealFatsSum += parseFloat(cell.innerHTML);
+              })
+              totalMealFats.innerHTML = mealFatsSum.toFixed(2);
+
+              mealKcalCells.forEach(cell => {
+                mealKcalSum += parseFloat(cell.innerHTML);
+              })
+            //   if (Number.isInteger(mealKcalSum)) {
+            //     totalMealKcal.innerHTML = mealKcalSum
+            //   } else {
+                totalMealKcal.innerHTML = mealKcalSum.toFixed(2);
+            //   }
+              
+
+
+
+            //   console.log(mealWeightSum);
+
+
+                // let fields = document.querySelectorAll('#your-id input');
+                // let sum = 0;
+
+                // fields.forEach(field => {
+                // sum += parseFloat(field.value);
+                // });
+
             }
           }
 
