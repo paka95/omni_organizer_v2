@@ -7,16 +7,15 @@ export function buildList() {
     fetch('add-meal/')
     .then(response => response.json())
     .then(data => {
-        // const mealsListContainer = document.getElementById('meals-list-container');
         const days = groupByDays(data);
-        // console.log("====days====");
-        // console.log(days);
-        // console.log("====days====");
+
+        console.log(days);
+
         for (const day in days) {
             if (Object.keys(days[day]).length !== 0) {
 
             // console.log("day:", day);
-            const mealDay = `<div class="meal-day">${day}</div>`;
+            const mealDay = `<div class="meal-day">${day.charAt(0).toUpperCase() + day.slice(1)}</div>`;
 
             const mealDayDiv = document.createElement('div');
             mealDayDiv.innerHTML = mealDay;
@@ -25,9 +24,16 @@ export function buildList() {
             // console.log("===");
             // console.log(days[day]);
             // console.log("===");
-            }
 
 
+            // ten ponizej koment
+            // }
+
+            let totalWeightDay = 0;
+            let totalProteinsDay = 0;
+            let totalCarbsDay = 0;
+            let totalFatsDay = 0;
+            let totalKcalDay = 0;
             // Loop over each meal type for this day
             for (const mealType in days[day]) {
                 // console.log("test");
@@ -35,10 +41,10 @@ export function buildList() {
                 // console.log("mealType", mealType);
                 // console.log("test");
 
-
+              const formattedMealType = mealType === 'second_breakfast' ? 'Second Breakfast' : mealType.charAt(0).toUpperCase() + mealType.slice(1);
               const mealTypeHTML = `
               <div class="content-row meal-content-row">
-                <label for="meal-row" style="padding-left:10px; color: orange; font-size: 1.5vh">${mealType}</label>
+                <label for="meal-row" style="padding-left:10px; color: orange; font-size: 1.5vh">${formattedMealType}</label>
                     <div name="meal-row" class="meal-row">
                         <div class="meal-product-name" style="text-align: center;">Name</div>
                         <div class="separator"></div>
@@ -60,17 +66,17 @@ export function buildList() {
                     <div class="separator-horizontal"></div>
 
                     <div name="meal-row" class="meal-row">
-                        <div class="meal-product-name" style="text-align: center; color:orange">TOTAL</div>
+                        <div class="meal-product-name" style="text-align: center; color:orange"></div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients" id="total-meal-weight-${day}-${mealType}">Weight</div>
+                        <div class="meal-nutrients meal-nutrients-total" id="total-meal-weight-${day}-${mealType}"></div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients" id="total-meal-proteins-${day}-${mealType}">Proteins</div>
+                        <div class="meal-nutrients meal-nutrients-total" id="total-meal-proteins-${day}-${mealType}"></div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients" id="total-meal-carbs-${day}-${mealType}">Carbs</div>
+                        <div class="meal-nutrients meal-nutrients-total" id="total-meal-carbs-${day}-${mealType}"></div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients" id="total-meal-fats-${day}-${mealType}">Fats</div>
+                        <div class="meal-nutrients meal-nutrients-total" id="total-meal-fats-${day}-${mealType}"></div>
                         <div class="separator"></div>
-                        <div class="meal-nutrients" id="total-meal-kcal-${day}-${mealType}">Kcal</div>
+                        <div class="meal-nutrients meal-nutrients-total" id="total-meal-kcal-${day}-${mealType}"></div>
                     </div>
                 </div>
                 </div>
@@ -101,21 +107,10 @@ export function buildList() {
                 </div>
                 `;
 
-
-
-
-                // console.log("test2");
-                // console.log("day2", day);
-                // console.log("mealType2", mealType);
-                // console.log("test2");
-
                 const mealRowsContainer = document.getElementById(`${day}-${mealType}`);
                 const mealRowDiv = document.createElement('div');
                 mealRowDiv.innerHTML = mealRowHTML;
                 mealRowsContainer.appendChild(mealRowDiv);
-
-
-                // console.log(`    ${meal.product_name}, ${meal.meal_kcal}`);
               }
 
               const mealWeightCells = document.querySelectorAll(`.meal-weight-${day}-${mealType}`);
@@ -141,51 +136,55 @@ export function buildList() {
               mealWeightCells.forEach(cell => {
                 mealWeightSum += parseFloat(cell.innerHTML);
               })
-            //   if (Number.isInteger(mealWeightSum)) {
-            //     totalMealWeight.innerHTML = mealWeightSum
-            //   } else {
-            //     totalMealWeight.innerHTML = mealWeightSum.toFixed(2);
-            //   }
               totalMealWeight.innerHTML = mealWeightSum.toFixed(2);
+              totalWeightDay += parseFloat(mealWeightSum.toFixed(2));
 
               mealProteinsCells.forEach(cell => {
                 mealProteinsSum += parseFloat(cell.innerHTML);
               })
               totalMealProteins.innerHTML = mealProteinsSum.toFixed(2);
+              totalProteinsDay += parseFloat(mealProteinsSum.toFixed(2));
 
               mealCarbsCells.forEach(cell => {
                 mealCarbsSum += parseFloat(cell.innerHTML);
               })
               totalMealCarbs.innerHTML = mealCarbsSum.toFixed(2);
+              totalCarbsDay += parseFloat(mealCarbsSum.toFixed(2));
 
               mealFatsCells.forEach(cell => {
                 mealFatsSum += parseFloat(cell.innerHTML);
               })
               totalMealFats.innerHTML = mealFatsSum.toFixed(2);
+              totalFatsDay += parseFloat(mealFatsSum.toFixed(2));
 
               mealKcalCells.forEach(cell => {
                 mealKcalSum += parseFloat(cell.innerHTML);
               })
-            //   if (Number.isInteger(mealKcalSum)) {
-            //     totalMealKcal.innerHTML = mealKcalSum
-            //   } else {
-                totalMealKcal.innerHTML = mealKcalSum.toFixed(2);
-            //   }
-              
-
-
-
-            //   console.log(mealWeightSum);
-
-
-                // let fields = document.querySelectorAll('#your-id input');
-                // let sum = 0;
-
-                // fields.forEach(field => {
-                // sum += parseFloat(field.value);
-                // });
-
+                totalMealKcal.innerHTML = mealKcalSum.toFixed(2);  
+                totalKcalDay += parseFloat(mealKcalSum.toFixed(2));           
             }
+            
+            const mealDayTotal = `<div class="content-row total-content-row">
+                  <div class="total-row">
+                  <div class="meal-product-name" style="text-align: center; color:orange">total on ${day}</div>
+                  <div class="separator"></div>
+                  <div class="meal-nutrients day-nutrients-total" id="total-${day}-weight">${totalWeightDay.toFixed(2)}</div>
+                  <div class="separator"></div>
+                  <div class="meal-nutrients day-nutrients-total" id="total-${day}-proteins">${totalProteinsDay.toFixed(2)}</div>
+                  <div class="separator"></div>
+                  <div class="meal-nutrients day-nutrients-total" id="total-${day}-carbs">${totalCarbsDay.toFixed(2)}</div>
+                  <div class="separator"></div>
+                  <div class="meal-nutrients day-nutrients-total" id="total-${day}-fats">${totalFatsDay.toFixed(2)}</div>
+                  <div class="separator"></div>
+                  <div class="meal-nutrients day-nutrients-total" id="total-${day}-kcal">${totalKcalDay.toFixed(2)}</div>
+              </div>
+            </div>`;
+            
+
+            const mealDayTotalDiv = document.createElement('div');
+            mealDayTotalDiv.innerHTML = mealDayTotal;
+            mealsListContainer.appendChild(mealDayTotalDiv);
+          }
           }
 
     })
