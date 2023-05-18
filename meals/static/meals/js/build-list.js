@@ -1,3 +1,4 @@
+import { deleteMeal } from "./delete-meal.js";
 import { groupByDays } from "./group-by-days.js";
 
 export function buildList() {
@@ -57,6 +58,8 @@ export function buildList() {
                         <div class="meal-nutrients">Fats [g]</div>
                         <div class="separator"></div>
                         <div class="meal-nutrients">Kcal</div>
+                        <div class="separator"></div>
+                        <div class="meal-nutrients"></div>
                     </div>
 
                     <div class="separator-horizontal"></div>
@@ -77,6 +80,8 @@ export function buildList() {
                         <div class="meal-nutrients meal-nutrients-total" id="total-meal-fats-${day}-${mealType}"></div>
                         <div class="separator"></div>
                         <div class="meal-nutrients meal-nutrients-total" id="total-meal-kcal-${day}-${mealType}"></div>
+                        <div class="separator"></div>
+                        <div class="meal-nutrients"></div>
                     </div>
                 </div>
                 </div>
@@ -92,7 +97,7 @@ export function buildList() {
 
               for (const meal of days[day][mealType]) {
                 const mealRowHTML = `
-                <div name="meal-row" class="meal-row">
+                <div name="meal-row" class="meal-row" id="meal-${meal.id}">
                     <div class="meal-product-name">${meal.product_name}</div>
                     <div class="separator"></div>
                     <div class="meal-nutrients meal-weight-${day}-${mealType}">${meal.weight.toFixed(2)}</div>
@@ -104,6 +109,15 @@ export function buildList() {
                     <div class="meal-nutrients meal-fats-${day}-${mealType}">${meal.meal_fats.toFixed(2)}</div>
                     <div class="separator"></div>
                     <div class="meal-nutrients meal-kcal-${day}-${mealType}">${meal.meal_kcal.toFixed(2)}</div>
+                    <div class="separator"></div>
+                    <div class="meal-nutrients meal-nutrients-flex">
+                        <div class="edit-btn">
+                            <i class="fa-solid fa-pen"></i>
+                        </div>
+                        <div class="delete-btn">
+                            <i class="fa-solid fa-trash-alt"></i>
+                        </div>
+                    </div>
                 </div>
                 `;
 
@@ -112,6 +126,7 @@ export function buildList() {
                 mealRowDiv.innerHTML = mealRowHTML;
                 mealRowsContainer.appendChild(mealRowDiv);
               }
+              
 
               const mealWeightCells = document.querySelectorAll(`.meal-weight-${day}-${mealType}`);
               const totalMealWeight = document.getElementById(`total-meal-weight-${day}-${mealType}`);
@@ -177,6 +192,8 @@ export function buildList() {
                   <div class="meal-nutrients day-nutrients-total" id="total-${day}-fats">${totalFatsDay.toFixed(2)}</div>
                   <div class="separator"></div>
                   <div class="meal-nutrients day-nutrients-total" id="total-${day}-kcal">${totalKcalDay.toFixed(2)}</div>
+                  <div class="separator"></div>
+                  <div class="meal-nutrients"></div>
               </div>
             </div>`;
             
@@ -186,6 +203,11 @@ export function buildList() {
             mealsListContainer.appendChild(mealDayTotalDiv);
           }
           }
+
+          const deleteButtons = document.getElementsByClassName('delete-btn')
+          // const editButtons = document.getElementsByClassName('edit-btn')
+          deleteMeal(deleteButtons);
+          // editExpense(editButtons);
 
     })
 }

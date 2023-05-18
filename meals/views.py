@@ -1,19 +1,9 @@
 from django.shortcuts import render
-from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView, DestroyAPIView, UpdateAPIView, ListCreateAPIView, ListAPIView
-from rest_framework.response import Response
-from rest_framework import status
-from django.db.models import Sum
 from .apps import MealsConfig
 from django.views import View
-import datetime
 from .models import Product, Meal
 from .serializers import ProductSerializer, MealSerializer
-from itertools import zip_longest
-from django.db.models.functions import Lower
-from django.db.models import F
-from itertools import groupby
-from operator import attrgetter
 
 
 app_name = MealsConfig.name
@@ -32,11 +22,6 @@ class Index(View):
         }
         return render(request, self.template_name, context)
     
-
-        # type = 'dairy'
-        # products = Product.objects.filter(type=type)
-
-        # print(products)
     
 class GetProducts(ListAPIView):
     serializer_class = ProductSerializer
@@ -57,3 +42,7 @@ class AddMeal(ListCreateAPIView):
     serializer_class = MealSerializer
     queryset = Meal.objects.all()
 
+
+class DeleteMeal(DestroyAPIView):
+    serializer_class = MealSerializer    
+    queryset = Meal.objects.all()

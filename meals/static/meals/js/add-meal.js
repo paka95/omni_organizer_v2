@@ -26,16 +26,9 @@ export function addMeal() {
         body: JSON.stringify(mealObj),
     })
     .then(response => response.json())
-    // .then(data => console.log(data))
     .then(data => {
         console.log(data);
         mealForm.reset();
         buildList();
     })
-    
-    // console.log('=====');
-    // console.log(mealObj);
-    // console.log("adding meal");
-
-
 }
