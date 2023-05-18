@@ -46,3 +46,8 @@ class AddMeal(ListCreateAPIView):
 class DeleteMeal(DestroyAPIView):
     serializer_class = MealSerializer    
     queryset = Meal.objects.all()
+
+
+class UpdateMeal(UpdateAPIView):
+    serializer_class = MealSerializer    
+    queryset = Meal.objects.all()
