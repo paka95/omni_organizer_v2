@@ -158,7 +158,8 @@
     margin: 120px auto; 
     border-radius: 10px;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 35px;
 }
 
@@ -171,6 +172,7 @@
     text-transform: uppercase;
     font-family: Ubuntu;
     font-size: 30px;
+    /* width: 90%; */
 }
 
 #finances-icon {
