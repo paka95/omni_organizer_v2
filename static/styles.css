@@ -102,8 +102,8 @@
 }
 
 #sidebar {
-    width: 20%;
-    background-color: rgb(49, 57, 90);
+    width: 15%;
+    background-color: rgb(34, 39, 62);
     padding-top: 50px; /* height of the nav element */
     box-sizing: border-box;
 }
@@ -215,9 +215,6 @@
 
 
 .container-custom {
-    /* border: solid 2px white; */
     border-radius: 10px;
     margin: 20px 0;
-    /* background-color: greenyellow; */
-    /* margin-left: 10px; */
 }

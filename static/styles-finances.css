@@ -251,6 +251,10 @@ form {
     cursor: pointer;
 }
 
+.delete-btn:hover, .edit-btn:hover {
+    color: red
+}
+
 .total-cell {
     max-width: 300px;
 }

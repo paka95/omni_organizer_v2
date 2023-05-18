@@ -120,6 +120,10 @@
     cursor: pointer;
 }
 
+.delete-btn:hover {
+    color: green
+}
+
 .note-card-content {
     background-color: transparent; 
     height: 50px;

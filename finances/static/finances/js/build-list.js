@@ -92,10 +92,10 @@ export function buildList(datnia = null) {
                     <div class="input-wrapper input-wrapper-sm date-cell">
                         <div style="width: 200px">${formattedDate}</div>
                     </div>
-                    <div class="edit-btn">
+                    <div class="edit-btn" title="Edit expense">
                         <i class="fa-solid fa-pen"></i>
                     </div>
-                    <div class="delete-btn">
+                    <div class="delete-btn" title="Delete expense">
                         <i class="fa-solid fa-trash-alt"></i>
                     </div>
                 </div>`;

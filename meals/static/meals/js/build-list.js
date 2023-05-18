@@ -100,7 +100,7 @@ export function buildList() {
                                 <div class="meal-nutrients meal-kcal-${day}-${mealType}">${meal.meal_kcal.toFixed(2)}</div>
                                 <div class="separator"></div>
                                 <div class="meal-nutrients meal-nutrients-flex">
-                                    <div class="delete-btn">
+                                    <div class="delete-btn" title="Delete meal">
                                         <i class="fa-solid fa-trash-alt"></i>
                                     </div>
                                 </div>

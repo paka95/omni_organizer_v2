@@ -49,7 +49,7 @@ export function buildList() {
                     <div class="note-card" id="note-${note.id}">
                         <div class="note-card-headline">
                             <div class="note-card-title" title="${note.title}">${note.title}</div>
-                            <div class="delete-btn">
+                            <div class="delete-btn" title="Delete note">
                                 <i class="fa-solid fa-trash-alt"></i>
                             </div>
                         </div>
