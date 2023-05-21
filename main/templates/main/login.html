@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block dropdown %}
+{% endblock %}
+
+{% block content %}
+    <form method="post" class="login-form">
+        {% csrf_token %}
+        <div class="email-field">{{form.username}}</div>
+
+        <div class="password-field">{{form.password}}</div>
+        
+
+        <button type="submit">Login</button>
+        <div>No account yet? <a href="{% url 'register' %}">Register here</a></div>
+    </form>
+{% endblock %}

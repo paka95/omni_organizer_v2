@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+<div class="profile-container" style="padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div style="height: 100px; display:flex;">
+        <img src="/static/images/user.png" alt="useravatar" width="100px" height="100px" style="left:0%"></img>
+        <div>
+            <div style="margin-left: 30px; margin-top: 35px;  color: gray">Email address: <b>{{request.user.email}}</b></div>
+        </div>
+    </div>
+
+    <div class="profile_separator_bg"></div>
+
+    <div style="padding: 10px">
+        <div><a href="#" >Edit password</a></div>
+        <div class="profile_separator_sm"></div>
+        <div><a href="#" style="color: red">Delete account</a></div>
+    </div>
+</div>
+{% endblock %}
