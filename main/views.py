@@ -7,6 +7,7 @@ from django.views.generic.edit import CreateView
 
 
 
+
 @login_required
 def index(request):
     return render(request, 'main/homepage.html')
@@ -26,3 +27,5 @@ class CustomRegisterView(CreateView):
     template_name = 'main/register.html'
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
+
+
