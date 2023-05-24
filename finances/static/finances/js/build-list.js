@@ -18,7 +18,10 @@ export function buildList(datnia = null) {
     fetch('get-expenses/', {
         method: "POST",
         body: JSON.stringify(obj),
-        headers: { "Content-Type": "application/json" }
+        headers: { 
+            "Content-Type": "application/json",
+            'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
+         }
       })
       .then(response => response.json())
       .then(data => {
