@@ -1,7 +1,7 @@
 import { getCookie } from "./get-cookie.js";
 import { buildList } from "./build-list.js";
 
-export function addMeal() {
+export function addMeal(userId) {
     const mealForm = document.getElementById('meal-form')
     const mealProductType = document.getElementById('meal-product-type')
     const mealName = document.getElementById('meal-name')
@@ -11,6 +11,7 @@ export function addMeal() {
     const csrftoken = getCookie('csrftoken');
 
     const mealObj = {
+        'user': userId,
         'product': mealName.value,
         'meal_day': mealDay.value,
         'meal_type': mealType.value,

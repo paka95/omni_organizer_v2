@@ -5,6 +5,7 @@ from django.views import View
 from .models import Product, Meal
 from .serializers import ProductSerializer, MealSerializer
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
 
 
 app_name = MealsConfig.name
@@ -41,7 +42,14 @@ class AddProduct(CreateAPIView):
 
 class AddMeal(ListCreateAPIView):
     serializer_class = MealSerializer
-    queryset = Meal.objects.all()
+    # queryset = Meal.objects.all()
+
+    def get_queryset(self):
+        user = self.request.user
+        return Meal.objects.filter(user=user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class DeleteMeal(DestroyAPIView):
@@ -52,3 +60,8 @@ class DeleteMeal(DestroyAPIView):
 class UpdateMeal(UpdateAPIView):
     serializer_class = MealSerializer    
     queryset = Meal.objects.all()
+
+
+def get_user_id(request):
+    user_id = request.user.id
+    return JsonResponse({'user_id': user_id})

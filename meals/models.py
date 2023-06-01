@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Product(models.Model):
     TYPE_CHOICES = [
@@ -53,6 +56,7 @@ class Meal(models.Model):
     meal_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, default = None)
     weight = models.FloatField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     @property
     def kcal(self):
