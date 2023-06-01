@@ -1,13 +1,21 @@
 import { deleteExpense } from "./delete-expense.js";
 import { editExpense } from "./edit-expense.js";
+import { getCookie } from "./get-cookie.js";
 
-export function buildList(datnia = null) {
+const csrftoken = getCookie('csrftoken');
+
+export function buildList(submissionDate = null) {
+
+    // submissionDate is a date from "expense-date" input field in index.html after submitting a new expense
+
     let specifiedDate;
-    if (datnia) {
-        specifiedDate = datnia;
-        document.getElementById("input-cell-date-sm").value = datnia;
+    
+    if (submissionDate) {
+        specifiedDate = submissionDate;
+        document.getElementById("input-cell-date-sm").value = submissionDate;
     }else{
         specifiedDate = document.getElementById("input-cell-date-sm").value;
+        console.log('specifieddate w elsie', specifiedDate)
     }
     const expensesList = document.querySelector('.expenses-list-container');
     
@@ -20,7 +28,7 @@ export function buildList(datnia = null) {
         body: JSON.stringify(obj),
         headers: { 
             "Content-Type": "application/json",
-            'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
+            'X-CSRFToken': csrftoken,
          }
       })
       .then(response => response.json())

@@ -11,6 +11,7 @@ from .serializers import ExpenseSerializer
 from itertools import zip_longest
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
+from django.http import JsonResponse
 
 
 app_name = FinancesConfig.name
@@ -23,8 +24,9 @@ class Index(LoginRequiredMixin, TemplateView):
 class GetExpenses(APIView):
     def post(self, request, *args, **kwargs):
         data = request.data
+        user = self.request.user
         specified_date_obj = datetime.datetime.strptime(data["specified_date"][:10], '%Y-%m-%d')
-        expenses = Expense.objects.order_by('-date_created').filter(date_created__month=specified_date_obj.month)
+        expenses = Expense.objects.order_by('-date_created').filter(date_created__month=specified_date_obj.month, user=user)
 
         total_amount = expenses.aggregate(Sum('amount'))['amount__sum']
         if total_amount:
@@ -54,8 +56,9 @@ class GetPreview(APIView):
             'date_created': []
         }
         data = request.data
+        user = self.request.user
         specified_date_obj = datetime.datetime.strptime(data["specified_date"][:10], '%Y-%m-%d')
-        expenses = Expense.objects.order_by('-date_created').filter(date_created__month=specified_date_obj.month)
+        expenses = Expense.objects.order_by('-date_created').filter(date_created__month=specified_date_obj.month, user=user)
         total_amount = expenses.aggregate(Sum('amount'))['amount__sum']
         if total_amount:
             total_amount = round(total_amount, 2)
@@ -112,6 +115,8 @@ class GetPreview(APIView):
 class SubmitExpense(CreateAPIView):
     serializer_class = ExpenseSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class DeleteExpense(DestroyAPIView):
@@ -119,7 +124,11 @@ class DeleteExpense(DestroyAPIView):
     queryset = Expense.objects.all()
 
 
-
 class UpdateExpense(UpdateAPIView):
     serializer_class = ExpenseSerializer    
     queryset = Expense.objects.all()
+
+
+def get_user_id(request):
+    user_id = request.user.id
+    return JsonResponse({'user_id': user_id})

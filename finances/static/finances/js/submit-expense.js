@@ -14,6 +14,7 @@ export function submitExpense () {
 
     const expenseDateTime = expenseDate.value + " " + hour + ":" + minute + ":" + second
     const expenseData = {
+        'user': 1,
         'title': expenseTitle.value,
         'amount': expenseAmount.value,
         'tag': expenseTag.value,
@@ -31,11 +32,13 @@ export function submitExpense () {
     .then(data => {
         // here I needed to get the same date from the response back, 
         // because const expenseDate = document.getElementById("expense-date") did not work, it was empty in this .then block
+        
         const date = new Date(data.date_created);
         const day = String(date.getUTCDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const year = date.getFullYear();
         const formattedDate = `${year}-${month}-${day}`;
+        console.log('formattedDate', formattedDate)
         buildList(formattedDate);
     })
     .catch(error => console.error(error));

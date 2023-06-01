@@ -6,6 +6,8 @@ export function buildPreview() {
     const previewTotals = document.getElementById("preview-total-tag-row");
     const previewTotalRow = document.getElementById("preview-total-row");
     const csrftoken = getCookie('csrftoken');
+
+
     const dateObj = {
         'specified_date' : specifiedDate
     }

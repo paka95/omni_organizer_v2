@@ -9,5 +9,6 @@ urlpatterns = [
     path('delete/<int:pk>/', views.DeleteExpense.as_view(), name='delete-expense'),
     path('update/<int:pk>/', views.UpdateExpense.as_view(), name='update-expense'),
     path('preview/', views.Preview.as_view(), name='preview'),
-    path('preview/get-preview/', views.GetPreview.as_view(), name='get-preview')
+    path('preview/get-preview/', views.GetPreview.as_view(), name='get-preview'),
+    path('get-user-id/', views.get_user_id, name='get-user-id'),
 ]
