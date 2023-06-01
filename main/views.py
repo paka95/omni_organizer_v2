@@ -4,18 +4,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
 
 
-
-@login_required
-def index(request):
-    return render(request, 'main/homepage.html')
+class Index(LoginRequiredMixin, TemplateView):
+    template_name = 'main/homepage.html'
 
 
-@login_required
-def user_profile(request):
-    return render(request, 'main/user-profile.html')
+class UserProfile(LoginRequiredMixin, TemplateView):
+    template_name = 'main/user-profile.html'
 
 
 class CustomLoginView(LoginView):

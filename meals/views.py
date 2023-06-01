@@ -4,11 +4,12 @@ from .apps import MealsConfig
 from django.views import View
 from .models import Product, Meal
 from .serializers import ProductSerializer, MealSerializer
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 app_name = MealsConfig.name
 
-class Index(View):
+class Index(LoginRequiredMixin, View):
     template_name = 'meals/index.html'
 
     def get(self, request, *args, **kwargs):

@@ -9,15 +9,14 @@ import datetime
 from .models import Expense
 from .serializers import ExpenseSerializer
 from itertools import zip_longest
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
 
 app_name = FinancesConfig.name
 
-class Index(View):
+class Index(LoginRequiredMixin, TemplateView):
     template_name = 'finances/index.html'
-
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
     
 
 

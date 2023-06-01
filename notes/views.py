@@ -18,16 +18,12 @@ app_name = NotesConfig.name
 
 class Index(LoginRequiredMixin, TemplateView):
     template_name = 'notes/index.html'
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
     
 
 class GetNotes(ListAPIView):
     # queryset = Note.objects.order_by('-last_updated')
     serializer_class = NoteSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -36,7 +32,7 @@ class GetNotes(ListAPIView):
 
 class SubmitNote(CreateAPIView):
     serializer_class = NoteSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

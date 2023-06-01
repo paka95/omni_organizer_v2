@@ -3,7 +3,7 @@ import { getCookie } from "./get-cookie.js";
 
 export function submitNote(userId) {
     const csrftoken = getCookie('csrftoken');
-    const obj = {
+    const userObj = {
         'user': userId
     }
     fetch('submit/', {
@@ -12,7 +12,7 @@ export function submitNote(userId) {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken,
         },
-        body: JSON.stringify(obj)
+        body: JSON.stringify(userObj)
     })
     .then(()=> {
         buildList();

@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const noteAddBtn = document.getElementById("note-add-btn");
     noteAddBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        // submitNote();
         fetch('get-user-id/', {
             method: 'GET',
             headers: {
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             const userId = data.user_id;
-            console.log(userId);
             submitNote(userId);
         });
     
