@@ -7,14 +7,21 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post" class="login-form">
+    <form method="post" class="login-register-form">
         {% csrf_token %}
         <div class="email-field">{{form.username}}</div>
 
         <div class="password-field">{{form.password}}</div>
         
+        <div class="error-field">
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        </div>
 
-        <button type="submit">Login</button>
-        <div>No account yet? <a href="{% url 'register' %}">Register here</a></div>
+        <button class="button-field" type="submit">Login</button>
+        <div class="redirect-field">No account yet? <a href="{% url 'register' %}">Register here</a></div>
     </form>
 {% endblock %}

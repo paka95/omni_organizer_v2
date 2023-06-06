@@ -172,7 +172,6 @@
     text-transform: uppercase;
     font-family: Ubuntu;
     font-size: 30px;
-    /* width: 90%; */
 }
 
 #finances-icon {
@@ -248,10 +247,73 @@
     background-color:white;
 }
 
-.login-form {
-    background-color: red;
+.login-register-form {
+    background-color: rgb(49, 57, 90);
     margin: 100px auto;
     width: 400px;
     height: 400px;
     text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.381);
+    border-radius: 5px;
+    position: relative;
+}
+
+.email-field {
+    height: 80px;
+    padding-top: 40px;
+}
+
+.password-field {
+    height: 80px;
+    padding-top: 40px;
+}
+
+.button-field{
+    bottom: 50px;
+    width: 50%;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    position: absolute;
+    border-radius: 5px;
+    background-color: rgb(49, 57, 90);
+    border: 1px solid #0F111B;
+    height: 40px;
+    color: gray;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-field:hover {
+    background-color: #0F111B;
+    color: white;
+}
+
+.redirect-field {
+    bottom: 10px;
+    width: 100%;
+    position: absolute;
+}
+
+.email-cell {
+    border-radius: 5px;
+    border: none;
+    background-color: #0F111B;
+    height: 40px;
+    width: 60%;
+    padding: 10px;
+    color: gray;
+}
+
+.password-cell {
+    border-radius: 5px;
+    border: none;
+    background-color: #0F111B;
+    height: 40px;
+    width: 60%;
+    padding: 10px;
+    color: gray;
+}
+
+.error-field {
+    color: red;
+    margin: 10px 0;
 }
