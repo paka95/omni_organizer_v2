@@ -3,7 +3,7 @@ import { populateProducts } from "./populate-products.js";
 import { addMeal } from "./add-meal.js";
 import { buildList } from "./build-list.js";
 import { getCookie } from "./get-cookie.js";
-import { showError } from "./showError.js";
+import { showError } from "./show-error.js";
 
 const csrftoken = getCookie('csrftoken');
 
@@ -23,11 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (productName == "" || productType == "" || proteins == "" || carbs == "" || fats == "" || kcal == ""){
             showError("You can't leave an empty value");
-            productForm.reset();
         } else {
             if (proteins < 0 || carbs < 0 || fats < 0 || kcal < 0) {
                 showError("Value can't be negative");
-                productForm.reset();
             } else {
                 addProduct();
             }
@@ -56,11 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (mealProductType == "" || mealName == "" || mealDay == "" || mealType == "" || mealWeight == ""){
             showError("You can't leave an empty value");
-            mealForm.reset();
         } else {
             if (mealWeight < 0) {
                 showError("Weight can't be negative");
-                mealForm.reset();
             } else {
                 fetch('get-user-id/', {
                     method: 'GET',
@@ -75,21 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
         }
-
-
-
-
-        // fetch('get-user-id/', {
-        //     method: 'GET',
-        //     headers: {
-        //         'X-CSRFToken': csrftoken,
-        //     },
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     const userId = data.user_id;
-        //     addMeal(userId);
-        // });
     })
 });
 
