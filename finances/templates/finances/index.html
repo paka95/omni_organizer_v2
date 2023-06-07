@@ -46,6 +46,8 @@
 
     <a href="{% url 'preview' %}" id="preview-btn" class="preview-btn">Preview</a>
     
+    <div class="error-banner" id="error-banner"></div>
+
     <script src="{% static 'finances/js/populate-date.js' %}"></script>
     <script type="module" src="{% static 'finances/js/get-expenses.js' %}"></script>
 {% endblock %}

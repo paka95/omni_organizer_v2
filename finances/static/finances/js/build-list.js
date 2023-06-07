@@ -15,7 +15,6 @@ export function buildList(submissionDate = null) {
         document.getElementById("input-cell-date-sm").value = submissionDate;
     }else{
         specifiedDate = document.getElementById("input-cell-date-sm").value;
-        console.log('specifieddate w elsie', specifiedDate)
     }
     const expensesList = document.querySelector('.expenses-list-container');
     

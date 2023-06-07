@@ -38,7 +38,6 @@ export function submitExpense () {
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const year = date.getFullYear();
         const formattedDate = `${year}-${month}-${day}`;
-        console.log('formattedDate', formattedDate)
         buildList(formattedDate);
     })
     .catch(error => console.error(error));
