@@ -7,7 +7,8 @@ export function buildPreview() {
     const previewTotalRow = document.getElementById("preview-total-row");
     const csrftoken = getCookie('csrftoken');
 
-
+    // specifiedDate is the date from the datepicker
+    // it will call GetPreview endpoint with this date as an object in order to get in response all the expenses based on this date
     const dateObj = {
         'specified_date' : specifiedDate
     }
@@ -24,6 +25,10 @@ export function buildPreview() {
       .then(data => {
         console.log(data);
         data.expenses_list.forEach(expense => {
+            // expenses_list is a list of rows of expenses
+            // expense [x][0] is the amount of the expense, expense [x][1] is the name/title and date of it
+            // if there is no corresponding expense in the row, leave the cell blank - same with the title and date 
+            // finally create the row and append it to the list
             const previewRow = `
             <div class="content-row preview-row-sm">
                 <div class="preview-cell" title="${expense[0][1] ?? ''}">${expense[0][0] ?? ''}</div>
@@ -42,6 +47,7 @@ export function buildPreview() {
             previewList.appendChild(previewDiv);
         })
 
+        // creating a row with the total sum of each type of the expenses
         previewTotals.innerHTML = `
         <div class="preview-cell">
             <div id="tag-food">${data.expenses_totals['food']}</div>
@@ -63,6 +69,7 @@ export function buildPreview() {
             <div id="tag-misc">${data.expenses_totals['misc']}</div>
         </div>`;
 
+        // display the information accordingly based on the number of expenses
         if (data.expenses_list.length == 0) {
             previewTotalRow.style.justifyContent = 'flex-start';
             previewTotalRow.innerHTML = `

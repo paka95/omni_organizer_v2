@@ -1,48 +1,47 @@
 import { buildList } from "./build-list.js"
+import { getCookie } from "./get-cookie.js";
+const csrftoken = getCookie('csrftoken');
 
 export function submitExpense () {
+    // if the data provided by the user is correct, take the values from the input fields and create an object with them
     const expenseForm = document.getElementById("expense-form")
-    const expenseTitle = document.getElementById("expense-title")
-    const expenseAmount = document.getElementById("expense-amount")
-    const expenseTag = document.getElementById("expense-tag")
-    const expenseDate = document.getElementById("expense-date")
+    const expenseTitle = document.getElementById("expense-title").value
+    const expenseAmount = document.getElementById("expense-amount").value
+    const expenseTag = document.getElementById("expense-tag").value
+    const expenseDate = document.getElementById("expense-date").value
 
     const currentTime = new Date();
     const hour = currentTime.getHours();
     const minute = currentTime.getMinutes();
     const second = currentTime.getSeconds();
 
-    const expenseDateTime = expenseDate.value + " " + hour + ":" + minute + ":" + second
+    const expenseDateTime = expenseDate + " " + hour + ":" + minute + ":" + second
+
+    // 'user': 1 is a magic number - endpoint requires this value to be sent in a request, it is then changed in the SubmitExpense view
+    // to logged in and correct user
+    // 1 is admin's ID
+    // it is due to bad design
     const expenseData = {
         'user': 1,
-        'title': expenseTitle.value,
-        'amount': expenseAmount.value,
-        'tag': expenseTag.value,
+        'title': expenseTitle,
+        'amount': expenseAmount,
+        'tag': expenseTag,
         'date_created': expenseDateTime,
     };
     fetch('submit/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
+            'X-CSRFToken': csrftoken,
         },
         body: JSON.stringify(expenseData),
     })
-    .then(response => response.json())
-    .then(data => {
-        // here I needed to get the same date from the response back, 
-        // because const expenseDate = document.getElementById("expense-date") did not work, it was empty in this .then block
-        
-        const date = new Date(data.date_created);
-        const day = String(date.getUTCDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const year = date.getFullYear();
-        const formattedDate = `${year}-${month}-${day}`;
-        buildList(formattedDate);
+    .then(() => {
+        buildList(expenseDate);
     })
     .catch(error => console.error(error));
 
+    // after submitting the expense - reset the form and populate datepicker with previously specified date
     expenseForm.reset();
-    const currentDate = new Date().toISOString().substr(0, 10);
-    document.getElementById("expense-date").value = currentDate;
+    document.getElementById("expense-date").value = expenseDate;
 }
