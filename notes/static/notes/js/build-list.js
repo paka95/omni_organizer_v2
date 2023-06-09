@@ -10,6 +10,7 @@ export function buildList() {
     fetch('get-notes/')
     .then(response => response.json())
     .then(data => {
+        // displaying either empty or prompted note entering field
         if (data.length == 0) {
             notesList.innerHTML = `<div style="margin: 5px auto; width: 90%; height: 120px; text-align:center">You have no notes yet</div>`;
             noteInputContainer.innerHTML = `
@@ -62,6 +63,7 @@ export function buildList() {
                 noteDiv.innerHTML = noteHtml;
                 notesList.appendChild(noteDiv);
 
+                // rendering the bottom separator after each note, unless it's the last one
                 if (index !== data.length - 1) {
                     const separator = document.createElement('div');
                     separator.classList.add('separator');
@@ -69,7 +71,7 @@ export function buildList() {
                 }
 
             });
-            // loading first note's content into the form
+            // loading first note's content into the form after onload
             loadFirstNote();
             
             const deleteButtons = document.getElementsByClassName('delete-btn')

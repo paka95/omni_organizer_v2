@@ -7,6 +7,8 @@ export function submitNote(userId) {
         'user': userId
     }
     fetch('submit/', {
+        // it creates an empty note, assigns it with user's ID and loads its empty content into the input fields
+        // so that the user can edit them without the need to save the note
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

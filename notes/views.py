@@ -1,8 +1,4 @@
-from django.shortcuts import render
-from django.views import View
-from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView, DestroyAPIView, CreateAPIView, UpdateAPIView
-from rest_framework.permissions import IsAuthenticated
 from .apps import NotesConfig
 from .models import Note
 from .serializers import NoteSerializer
@@ -21,9 +17,7 @@ class Index(LoginRequiredMixin, TemplateView):
     
 
 class GetNotes(ListAPIView):
-    # queryset = Note.objects.order_by('-last_updated')
     serializer_class = NoteSerializer
-    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -32,7 +26,6 @@ class GetNotes(ListAPIView):
 
 class SubmitNote(CreateAPIView):
     serializer_class = NoteSerializer
-    # permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

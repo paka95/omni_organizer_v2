@@ -9,6 +9,8 @@ export function loadFirstNote () {
 
     noteForm.setAttribute('data-note-to-update', `${noteCardId}`);
 
+    // loading first note's data into the input fields
+
     noteTitleInput.value = noteCardTitle;
     noteContentInput.value = noteCardContent;
 }
