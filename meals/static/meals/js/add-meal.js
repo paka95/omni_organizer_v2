@@ -3,19 +3,18 @@ import { buildList } from "./build-list.js";
 
 export function addMeal(userId) {
     const mealForm = document.getElementById('meal-form')
-    const mealProductType = document.getElementById('meal-product-type')
-    const mealName = document.getElementById('meal-name')
-    const mealDay = document.getElementById('meal-day')
-    const mealType = document.getElementById('meal-type')
-    const mealWeight = document.getElementById('meal-weight')
+    const mealName = document.getElementById('meal-name').value
+    const mealDay = document.getElementById('meal-day').value
+    const mealType = document.getElementById('meal-type').value
+    const mealWeight = document.getElementById('meal-weight').value
     const csrftoken = getCookie('csrftoken');
 
     const mealObj = {
         'user': userId,
-        'product': mealName.value,
-        'meal_day': mealDay.value,
-        'meal_type': mealType.value,
-        'weight': mealWeight.value
+        'product': mealName,
+        'meal_day': mealDay,
+        'meal_type': mealType,
+        'weight': mealWeight
     }
 
     fetch('add-meal/', {
@@ -26,9 +25,7 @@ export function addMeal(userId) {
         },
         body: JSON.stringify(mealObj),
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
+    .then(() => {
         mealForm.reset();
         buildList();
     })

@@ -1,5 +1,4 @@
 import { deleteMeal } from "./delete-meal.js";
-// import { editMeal } from "./edit-meal.js";
 import { groupByDays } from "./group-by-days.js";
 
 export function buildList() {
@@ -9,6 +8,8 @@ export function buildList() {
     fetch('add-meal/')
     .then(response => response.json())
     .then(data => {
+        // sending data as meals with meal types to the function so that it makes them appear in correct order 
+        // - starting with monday and ending with sunday
         const days = groupByDays(data);
 
         const isEmpty = Object.keys(days).every(key => {
@@ -16,13 +17,14 @@ export function buildList() {
         });
 
         if (isEmpty) {
+          // checking if the response contains no objects (meals)
           const noMeals = `<div class="meal-content-row" style="color:white">You have no meals yet</div>`;
-
           const mealDayDiv = document.createElement('div');
           mealDayDiv.innerHTML = noMeals;
           mealsListContainer.appendChild(mealDayDiv);
         } else {
             for (const day in days) {
+              // for each day in days
                 if (Object.keys(days[day]).length !== 0) {
                     const mealDay = `<div class="meal-day">${day.charAt(0).toUpperCase() + day.slice(1)}</div>`;
                     const mealDayDiv = document.createElement('div');
@@ -85,6 +87,7 @@ export function buildList() {
                         mealsListContainer.appendChild(mealTypeDiv);
 
                         for (const meal of days[day][mealType]) {
+                          // for each meal in a given meal type of a day
                             const mealRowHTML = `
                             <div name="meal-row" class="meal-row" id="meal-${meal.id}">
                                 <div class="meal-product-name">${meal.product_name}</div>
@@ -113,7 +116,7 @@ export function buildList() {
                             mealRowsContainer.appendChild(mealRowDiv);
                         }
                         
-
+                        // getting values of every cell in a given category (weight, proteins, carbs, fats, kcal) and summing the values
                         const mealWeightCells = document.querySelectorAll(`.meal-weight-${day}-${mealType}`);
                         const totalMealWeight = document.getElementById(`total-meal-weight-${day}-${mealType}`);
                         let mealWeightSum = 0
@@ -134,6 +137,7 @@ export function buildList() {
                         const totalMealKcal = document.getElementById(`total-meal-kcal-${day}-${mealType}`);
                         let mealKcalSum = 0
 
+                        // for each cell (each meal) sum up the values of each category (weight, proteins, carbs, fats, kcal)
                         mealWeightCells.forEach(cell => {
                           mealWeightSum += parseFloat(cell.innerHTML);
                         })
@@ -165,6 +169,7 @@ export function buildList() {
                           totalKcalDay += parseFloat(mealKcalSum.toFixed(2));           
                     }
                     
+                    // creating a bar with totals under the table of a given day
                     const mealDayTotal = `<div class="content-row total-content-row">
                           <div class="total-row">
                           <div class="meal-product-name" style="text-align: center; color:orange">total on ${day}</div>

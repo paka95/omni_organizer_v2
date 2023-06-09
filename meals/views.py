@@ -14,6 +14,7 @@ class Index(LoginRequiredMixin, View):
     template_name = 'meals/index.html'
 
     def get(self, request, *args, **kwargs):
+        # getting options for select inputs in index.html
         product_types = Product.TYPE_CHOICES
         meal_types = Meal.TYPE_CHOICES
         meal_days = Meal.DAY_CHOICES
@@ -40,9 +41,8 @@ class AddProduct(CreateAPIView):
     serializer_class = ProductSerializer
 
 
-class AddMeal(ListCreateAPIView):
+class AddGetMeal(ListCreateAPIView):
     serializer_class = MealSerializer
-    # queryset = Meal.objects.all()
 
     def get_queryset(self):
         user = self.request.user

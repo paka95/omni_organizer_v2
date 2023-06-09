@@ -2,21 +2,21 @@ import { getCookie } from "./get-cookie.js"
 
 export function addProduct() {
     const productForm = document.getElementById('product-form')
-    const productName = document.getElementById('product-name')
-    const productType = document.getElementById('product-type')
-    const proteins = document.getElementById('proteins')
-    const carbs = document.getElementById('carbs')
-    const fats = document.getElementById('fats')
-    const kcal = document.getElementById('kcal')
+    const productName = document.getElementById('product-name').value
+    const productType = document.getElementById('product-type').value
+    const proteins = document.getElementById('proteins').value
+    const carbs = document.getElementById('carbs').value
+    const fats = document.getElementById('fats').value
+    const kcal = document.getElementById('kcal').value
     const csrftoken = getCookie('csrftoken');
 
     const productData = {
-        'name': productName.value,
-        'type': productType.value,
-        'proteins': proteins.value,
-        'carbs': carbs.value,
-        'fats': fats.value,
-        'kcal': kcal.value
+        'name': productName,
+        'type': productType,
+        'proteins': proteins,
+        'carbs': carbs,
+        'fats': fats,
+        'kcal': kcal
     }
 
     fetch('add-product/', {
@@ -32,8 +32,5 @@ export function addProduct() {
         console.log(data)
     })
     .catch(error => console.error(error));
-
-
     productForm.reset();
-    // console.log(product);
 }

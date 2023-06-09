@@ -54,7 +54,6 @@
         </div>
 
         <button type="submit" id="product-add-btn" class="content-row-btn">Add</button>
-
     </form>
 </div>
 
@@ -98,7 +97,7 @@
                 {% for type, label in meal_types %}
                     <option value="{{ type }}">{{ label }}</option>
                 {% endfor %}
-                </select>
+            </select>
         </div>
 
         <div class="separator"></div>
@@ -107,21 +106,12 @@
             <input type="text" placeholder="Weight" id="meal-weight" class="meal-weight-input">
         </div>
 
-
         <button type="submit" id="meal-add-btn" class="content-row-btn">Add</button>
-
-
-
     </form>
 </div>
 
 <div class="meals-list-container" id="meals-list-container"></div>
-
-
-
-<div class="error-banner" id="error-banner">dupakwas</div>
-
+<div class="error-banner" id="error-banner"></div>
 
 <script type="module" src="{% static 'meals/js/get-meals.js' %}"></script>
-
 {% endblock %}

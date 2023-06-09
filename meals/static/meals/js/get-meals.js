@@ -8,6 +8,7 @@ import { showError } from "./show-error.js";
 const csrftoken = getCookie('csrftoken');
 
 document.addEventListener("DOMContentLoaded", () => {
+    // after template onload build the list of meals
     buildList();
 
     const addProductBtn = document.getElementById("product-add-btn");
@@ -19,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const carbs = document.getElementById('carbs').value
         const fats = document.getElementById('fats').value
         const kcal = document.getElementById('kcal').value
-        const productForm = document.getElementById('product-form')
+
+        // checking if the enter values are not empty and if they are not negative
 
         if (productName == "" || productType == "" || proteins == "" || carbs == "" || fats == "" || kcal == ""){
             showError("You can't leave an empty value");
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mealType = document.getElementById("meal-product-type");
     mealType.addEventListener('change', (e) => {
         e.preventDefault();
+        // while adding a new meal - populate the meal name select field after specifying its type
         populateProducts(mealType);
     })
 
@@ -44,13 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
     addMealBtn.addEventListener('click', (e) => {
         e.preventDefault();
 
-
         const mealProductType = document.getElementById('meal-product-type').value
         const mealName = document.getElementById('meal-name').value
         const mealDay = document.getElementById('meal-day').value
         const mealType = document.getElementById('meal-type').value
         const mealWeight = document.getElementById('meal-weight').value
-        const mealForm = document.getElementById('meal-form')
+
+        // checking if the enter values are not empty and if they are not negative
 
         if (mealProductType == "" || mealName == "" || mealDay == "" || mealType == "" || mealWeight == ""){
             showError("You can't leave an empty value");
