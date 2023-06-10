@@ -1,5 +1,5 @@
 import { buildList } from "./build-list.js";
-import { showError } from "./show-error.js";
+import { showMessage } from "../../../../static/js/show-message.js";
 
 
 export function editExpense (editButtons) {
@@ -62,10 +62,10 @@ export function editExpense (editButtons) {
 
             // checking if provided values for editing are valid
             if (expenseAmountInput.value == "" || expenseTitleInput.value == "") {
-                showError("Amount can't be left empty")
+                showMessage("Amount can't be left empty", "error")
             } else {
                 if (expenseAmountInput.value < 0) {
-                    showError("You can't change to negative amount")
+                    showMessage("You can't change to negative amount", "error")
                 } else {
                         // if provided values for editing are correct, hide the cancel button and proceed
                         cancelBtn.classList.add('btn-hidden');
@@ -103,6 +103,7 @@ export function editExpense (editButtons) {
                         })
                         .then(() => {
                             buildList();
+                            showMessage("Expense changed", "success")
                         })
                         .catch(error => console.error(error));
 

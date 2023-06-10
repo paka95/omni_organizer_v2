@@ -1,6 +1,6 @@
 import { buildList } from "./build-list.js";
 import { submitExpense } from "./submit-expense.js";
-import { showError } from "./show-error.js";
+import { showMessage } from "../../../../static/js/show-message.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     buildList();
@@ -24,12 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const expenseTag = document.getElementById("expense-tag").value
 
             if (expenseTitle == "" || expenseAmount == "" || expenseTag == ""){
-                showError("You can't leave an empty value");
+                showMessage("You can't leave an empty value", "error")
             } else {
                 if (expenseAmount < 0 ) {
-                    showError("Value can't be negative");
+                    showMessage("Value can't be negative", "error")
                 } else {
                     submitExpense();
+                    showMessage("Expense added", "success")
                 }
             }
         } 

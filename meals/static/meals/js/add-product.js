@@ -1,4 +1,5 @@
 import { getCookie } from "./get-cookie.js"
+import { showMessage } from "../../../../static/js/show-message.js"
 
 export function addProduct() {
     const productForm = document.getElementById('product-form')
@@ -30,6 +31,7 @@ export function addProduct() {
     .then(response => response.json())
     .then(data => {
         console.log(data)
+        showMessage("Product added", "success")
     })
     .catch(error => console.error(error));
     productForm.reset();

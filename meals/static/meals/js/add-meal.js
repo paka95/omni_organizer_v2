@@ -1,5 +1,6 @@
 import { getCookie } from "./get-cookie.js";
 import { buildList } from "./build-list.js";
+import { showMessage } from "../../../../static/js/show-message.js";
 
 export function addMeal(userId) {
     const mealForm = document.getElementById('meal-form')
@@ -28,5 +29,6 @@ export function addMeal(userId) {
     .then(() => {
         mealForm.reset();
         buildList();
+        showMessage("Meal added", "success")
     })
 }

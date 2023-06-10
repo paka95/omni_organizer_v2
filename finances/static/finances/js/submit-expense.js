@@ -1,5 +1,6 @@
 import { buildList } from "./build-list.js"
 import { getCookie } from "./get-cookie.js";
+import { showMessage } from "../../../../static/js/show-message.js";
 const csrftoken = getCookie('csrftoken');
 
 export function submitExpense () {
@@ -38,6 +39,7 @@ export function submitExpense () {
     })
     .then(() => {
         buildList(expenseDate);
+        showMessage("Expense added", "success")
     })
     .catch(error => console.error(error));
 

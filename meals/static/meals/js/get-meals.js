@@ -3,7 +3,7 @@ import { populateProducts } from "./populate-products.js";
 import { addMeal } from "./add-meal.js";
 import { buildList } from "./build-list.js";
 import { getCookie } from "./get-cookie.js";
-import { showError } from "./show-error.js";
+import { showMessage } from "../../../../static/js/show-message.js";
 
 const csrftoken = getCookie('csrftoken');
 
@@ -22,14 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const kcal = document.getElementById('kcal').value
 
         // checking if the enter values are not empty and if they are not negative
-
         if (productName == "" || productType == "" || proteins == "" || carbs == "" || fats == "" || kcal == ""){
-            showError("You can't leave an empty value");
+            showMessage("You can't leave an empty value", "error")
         } else {
             if (proteins < 0 || carbs < 0 || fats < 0 || kcal < 0) {
-                showError("Value can't be negative");
+                showMessage("Value can't be negative", "error")
             } else {
                 addProduct();
+                showMessage("Meal added", "success")
             }
         }
     })
@@ -56,10 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // checking if the enter values are not empty and if they are not negative
 
         if (mealProductType == "" || mealName == "" || mealDay == "" || mealType == "" || mealWeight == ""){
-            showError("You can't leave an empty value");
+            showMessage("You can't leave an empty value", "error")
         } else {
             if (mealWeight < 0) {
-                showError("Weight can't be negative");
+                showMessage("Weight can't be negative", "error")
             } else {
                 fetch('get-user-id/', {
                     method: 'GET',

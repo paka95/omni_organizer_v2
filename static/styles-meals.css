@@ -243,22 +243,3 @@ select:hover {
 .delete-btn:hover, .edit-btn:hover {
     color: orange
 }
-
-.error-banner {
-    position: fixed;
-    width: 300px;
-    height: 50px;
-    background-color: rgb(180, 1, 1);
-    bottom: 50px;
-    right: 50px;
-    opacity: 0;
-    transition: opacity 0.5s;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.error-banner.show {
-    opacity: 1;
-}

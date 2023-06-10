@@ -1,5 +1,6 @@
 import { buildList } from "./build-list.js";
 import { getCookie } from "./get-cookie.js";
+import { showMessage } from "../../../../static/js/show-message.js";
 
 export function submitNote(userId) {
     const csrftoken = getCookie('csrftoken');
@@ -18,5 +19,6 @@ export function submitNote(userId) {
     })
     .then(()=> {
         buildList();
+        showMessage("Note added", "success")
     })
 }
