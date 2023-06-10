@@ -1,5 +1,6 @@
 import { deleteMeal } from "./delete-meal.js";
 import { groupByDays } from "./group-by-days.js";
+import { totalSummary } from "./total-summary.js";
 
 export function buildList() {
     const mealsListContainer = document.getElementById('meals-list-container');
@@ -174,15 +175,15 @@ export function buildList() {
                           <div class="total-row">
                           <div class="meal-product-name" style="text-align: center; color:orange">total on ${day}</div>
                           <div class="separator"></div>
-                          <div class="meal-nutrients day-nutrients-total" id="total-${day}-weight">${totalWeightDay.toFixed(2)}</div>
+                          <div class="meal-nutrients day-nutrients-total weight-totals" id="total-${day}-weight">${totalWeightDay.toFixed(2)}</div>
                           <div class="separator"></div>
-                          <div class="meal-nutrients day-nutrients-total" id="total-${day}-proteins">${totalProteinsDay.toFixed(2)}</div>
+                          <div class="meal-nutrients day-nutrients-total proteins-totals" id="total-${day}-proteins">${totalProteinsDay.toFixed(2)}</div>
                           <div class="separator"></div>
-                          <div class="meal-nutrients day-nutrients-total" id="total-${day}-carbs">${totalCarbsDay.toFixed(2)}</div>
+                          <div class="meal-nutrients day-nutrients-total carbs-totals" id="total-${day}-carbs">${totalCarbsDay.toFixed(2)}</div>
                           <div class="separator"></div>
-                          <div class="meal-nutrients day-nutrients-total" id="total-${day}-fats">${totalFatsDay.toFixed(2)}</div>
+                          <div class="meal-nutrients day-nutrients-total fats-totals" id="total-${day}-fats">${totalFatsDay.toFixed(2)}</div>
                           <div class="separator"></div>
-                          <div class="meal-nutrients day-nutrients-total" id="total-${day}-kcal">${totalKcalDay.toFixed(2)}</div>
+                          <div class="meal-nutrients day-nutrients-total kcal-totals" id="total-${day}-kcal">${totalKcalDay.toFixed(2)}</div>
                           <div class="separator"></div>
                           <div class="meal-nutrients meal-nutrients-flex"></div>
                       </div>
@@ -193,10 +194,12 @@ export function buildList() {
                     mealsListContainer.appendChild(mealDayTotalDiv);
               } 
             }
+            // function that adds rows with summed and averaged totals under the meals table
+            totalSummary();
         }
-          const deleteButtons = document.getElementsByClassName('delete-btn')
-          // const editButtons = document.getElementsByClassName('fa-pen')
-          deleteMeal(deleteButtons);
-          // editMeal(editButtons);
+        const deleteButtons = document.getElementsByClassName('delete-btn')
+        // const editButtons = document.getElementsByClassName('fa-pen')
+        deleteMeal(deleteButtons);
+        // editMeal(editButtons);
     })
 }

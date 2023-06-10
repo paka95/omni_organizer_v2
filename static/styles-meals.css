@@ -216,6 +216,11 @@ select:hover {
     width: 100%;
 }
 
+.summary-average-row {
+    color: orange;
+    font-weight: bold;
+}
+
 .meal-nutrients-flex {
     display: flex;
     flex-basis: 4%;
