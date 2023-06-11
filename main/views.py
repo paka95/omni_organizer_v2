@@ -1,6 +1,5 @@
-from django.shortcuts import render
 from .forms import LoginFormTemplate, CustomUserCreationForm
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
@@ -35,5 +34,3 @@ class CustomRegisterView(CreateView):
     def form_invalid(self, form):
         messages.error(self.request, 'Error in registration')
         return super().form_invalid(form)
-
-
