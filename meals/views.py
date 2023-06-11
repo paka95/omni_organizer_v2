@@ -10,6 +10,7 @@ from django.http import JsonResponse
 
 app_name = MealsConfig.name
 
+
 class Index(LoginRequiredMixin, View):
     template_name = 'meals/index.html'
 

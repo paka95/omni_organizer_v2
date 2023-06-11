@@ -3,11 +3,9 @@ from .apps import NotesConfig
 from .models import Note
 from .serializers import NoteSerializer
 from django.http import JsonResponse
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 
-# Create your views here.
 
 app_name = NotesConfig.name
 
