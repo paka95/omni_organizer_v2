@@ -50,23 +50,23 @@ export function buildPreview() {
         // creating a row with the total sum of each type of the expenses
         previewTotals.innerHTML = `
         <div class="preview-cell">
-            <div id="tag-food">${data.expenses_totals['food']}</div>
+            <div id="tag-food">${(data.expenses_totals['food']).toFixed(2)}</div>
         </div>
         <div class="separator"></div>
         <div class="preview-cell">
-            <div id="tag-transport">${data.expenses_totals['transport']}</div>
+            <div id="tag-transport">${(data.expenses_totals['transport']).toFixed(2)}</div>
         </div>
         <div class="separator"></div>
         <div class="preview-cell">
-            <div id="tag-bills">${data.expenses_totals['bills']}</div>
+            <div id="tag-bills">${(data.expenses_totals['bills']).toFixed(2)}</div>
         </div>
         <div class="separator"></div>
         <div class="preview-cell">
-            <div id="tag-fees">${data.expenses_totals['fees']}</div>
+            <div id="tag-fees">${(data.expenses_totals['fees']).toFixed(2)}</div>
         </div>
         <div class="separator"></div>
         <div class="preview-cell">
-            <div id="tag-misc">${data.expenses_totals['misc']}</div>
+            <div id="tag-misc">${(data.expenses_totals['misc']).toFixed(2)}</div>
         </div>`;
 
         // display the information accordingly based on the number of expenses
