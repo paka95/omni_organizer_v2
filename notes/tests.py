@@ -2,10 +2,9 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from main.models import CustomUser
 from .models import Note
-from rest_framework import status
 import json
 
-class NoteViewsTestCase(TestCase):
+class NotesTestCase(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = CustomUser.objects.create_user(email='testuser@x.com', password='testpassword')
