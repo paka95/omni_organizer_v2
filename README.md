@@ -18,10 +18,10 @@ You should also be able to register a new user at http://localhost:8000/register
 As the project is just showcasing simple API processes, it is missing proper user profile features (email address changing, password changing, profile deleting) as well as proper authentication - due to the fact, that templates are rendered by Django, I could not implement JWT authentication, which I really would like to have. Project is also lacking a proper, modern and trendy look, I can admit that. 
 
 # Plans for further development
-There is also a 4th app in the plans, which will help the user track his/her progress in the gym. I will also need to change the technology/completely rewrite the project, making the frontend being served separately, so I can incorporate JWT authentication, like modern websites do - that will be the next iteration of the project.
+## There is also a 4th app in the plans, which will help the user track his/her progress in the gym. I will also need to change the technology/completely rewrite the project, making the frontend being served separately, so I can incorporate JWT authentication, like modern websites do - that will be the next iteration of the project.
 
-Regarding finances app - I would also like to include in the future more graphs making the spending habits more appealing and visual to the user. Also adding some features like blockades on some of the types of expenses. Also I plan on adding a feature which will allow the user to create his/her own expenses type and make it more personalised.
+## Finances app - I would also like to include in the future more graphs making the spending habits more appealing and visual to the user. Also adding some features like blockades on some of the types of expenses. Also I plan on adding a feature which will allow the user to create his/her own expenses type and make it more personalised.
 
-Regarding meals app - I plan on adding a new feature which will allow the user to preview the meal plans in neat tables and not only in rows. There are also plans to add a feature that will allow the user to create and save a given meal plan and then place it in the meal plan. User will be able to have many different meal plans of the same type, which then he/she will be able to specify and add to the main plan. 
+## Meals app - I plan on adding a new feature which will allow the user to preview the meal plans in neat tables and not only in rows. There are also plans to add a feature that will allow the user to create and save a given meal plan and then place it in the meal plan. User will be able to have many different meal plans of the same type, which then he/she will be able to specify and add to the main plan. 
 
-Finally, I would also like to make the project responsive, so that the user can use it on mobile phones. 
+## Finally, I would also like to make the project responsive, so that the user can use it on mobile phones. 
