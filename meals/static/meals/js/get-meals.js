@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (productName == "" || productType == "" || proteins == "" || carbs == "" || fats == "" || kcal == ""){
             showMessage("You can't leave an empty value", "error")
         } else {
-            if (proteins < 0 || carbs < 0 || fats < 0 || kcal < 0) {
+            if (isNaN(proteins) || isNaN(carbs) || isNaN(fats) || isNaN(kcal)) {
+                showMessage("Nutrients must be numbers", "error")
+            } else if (proteins < 0 || carbs < 0 || fats < 0 || kcal < 0) {
                 showMessage("Value can't be negative", "error")
             } else {
                 addProduct();
@@ -58,7 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mealProductType == "" || mealName == "" || mealDay == "" || mealType == "" || mealWeight == ""){
             showMessage("You can't leave an empty value", "error")
         } else {
-            if (mealWeight < 0) {
+            if (isNaN(mealWeight)) {
+                showMessage("Weight must be a number", "error")
+            } else if (mealWeight < 0) {
                 showMessage("Weight can't be negative", "error")
             } else {
                 fetch('get-user-id/', {

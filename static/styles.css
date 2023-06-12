@@ -322,7 +322,6 @@
     position: fixed;
     width: 300px;
     height: 50px;
-    /* background-color: #0b4192; */
     bottom: 50px;
     right: 50px;
     opacity: 0;
@@ -331,6 +330,7 @@
     text-align: center;
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 1);
 }
 
 .message-banner.show {

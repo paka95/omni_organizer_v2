@@ -26,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (expenseTitle == "" || expenseAmount == "" || expenseTag == ""){
                 showMessage("You can't leave an empty value", "error")
             } else {
-                if (expenseAmount < 0 ) {
+                if (isNaN(expenseAmount)) {
+                    showMessage("Expense must be a number", "error")
+                } else if (expenseAmount < 0 ) {
                     showMessage("Value can't be negative", "error")
                 } else {
                     submitExpense();
