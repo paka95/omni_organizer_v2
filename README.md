@@ -25,3 +25,36 @@ As the project is just showcasing simple API processes, it is missing proper use
 * Meals app - I plan on adding a new feature which will allow the user to preview the meal plans in neat tables and not only in rows. There are also plans to add a feature that will allow the user to create and save a given meal plan and then place it in the meal plan. User will be able to have many different meal plans of the same type, which then he/she will be able to specify and add to the main plan. 
 
 * Finally, I would also like to make the project responsive, so that the user can use it on mobile phones. 
+
+
+# Project preview
+
+* Finances app
+![fin](https://github.com/paka95/omni_organizer_v2/assets/94203043/f1e5990b-83b2-469d-ad49-31765b81c624)
+
+* Meals app
+![meals](https://github.com/paka95/omni_organizer_v2/assets/94203043/c7c14ebf-209a-422a-a649-9c86276cadd4)
+
+* Notes app
+![notes](https://github.com/paka95/omni_organizer_v2/assets/94203043/c96d29e3-36e4-4c87-9c32-82a1c33f6c3e)
+
+* Navigating website
+https://github.com/paka95/omni_organizer_v2/assets/94203043/49762333-2773-4865-ba6e-ac4e60995a08
+
+
+* Finances app
+https://github.com/paka95/omni_organizer_v2/assets/94203043/de87d8fa-4f53-4513-a3df-8b1821eed066
+
+
+* Meals app
+https://github.com/paka95/omni_organizer_v2/assets/94203043/7815ef98-2dd8-4c4f-9b65-1d9c4119fafd
+
+
+https://github.com/paka95/omni_organizer_v2/assets/94203043/e72fac30-232f-453c-9efd-07a8f44fbe4e
+
+
+* Notes app
+https://github.com/paka95/omni_organizer_v2/assets/94203043/69bb2194-7c15-47ff-ae4c-96b29d49b060
+
+
+
